@@ -6,7 +6,7 @@
 <title>Nodus | Feed</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="css/styles.css" />
+<link rel="stylesheet" href="styles/style.css" />
 </head>
 <body>
 
@@ -65,7 +65,7 @@
         </svg>
         Messages
       </a>
-      <a class="nav-link" href="profile.html">
+      <a class="nav-link" href="profile/profile.php">
         <span class="nav-avatar" data-nav-avatar>N</span>
         Me
       </a>
@@ -92,7 +92,7 @@
     <section class="card rail-card" style="margin-top:16px;">
       <h4>Quick links</h4>
       <ul class="rail-list">
-        <li><a href="profile.html">View your profile</a></li>
+        <li><a href="profile/profile.php">View your profile</a></li>
         <li><a href="#">Saved posts</a></li>
         <li><a href="#">Groups</a></li>
       </ul>
@@ -192,6 +192,6 @@
   Nodus &mdash; a front-end concept. &nbsp;<a href="#" data-sign-out>Sign out</a>
 </footer>
 
-<script src="js/script.js"></script>
+<script src="../scripts/script.js"></script>
 </body>
 </html>

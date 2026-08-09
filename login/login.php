@@ -6,7 +6,7 @@
 <title>Nodus | Sign in</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="css/styles.css" />
+<link rel="stylesheet" href="../styles/style.css" />
 </head>
 <body>
 
@@ -71,7 +71,7 @@
 
       <div class="form-status" id="login-status" role="status"></div>
 
-      <form id="login-form" novalidate>
+      <form id="login-form" method="post" novalidate>
         <div class="form-field">
           <label for="login-email">Email</label>
           <input type="email" id="login-email" name="email" autocomplete="email" placeholder="you@company.com" />
@@ -102,12 +102,12 @@
 
       <button type="button" class="btn btn-outline btn-block">Continue with single sign-on</button>
 
-      <p class="auth-switch">New to Nodus? <a href="signup.html">Create an account</a></p>
+      <p class="auth-switch">New to Nodus? <a href="../signup/signup.php">Create an account</a></p>
     </div>
   </section>
 
 </div>
 
-<script src="js/script.js"></script>
+<script src="../scripts/script.js"></script>
 </body>
 </html>

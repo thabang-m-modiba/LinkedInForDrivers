@@ -6,7 +6,7 @@
 <title>Nodus | Create your account</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="css/styles.css" />
+<link rel="stylesheet" href="../styles/style.css" />
 </head>
 <body>
 
@@ -71,7 +71,7 @@
 
       <div class="form-status" id="signup-status" role="status"></div>
 
-      <form id="signup-form" novalidate>
+      <form id="signup-form" action="../includes/signup.inc.php" method="post" novalidate>
         <div class="form-field">
           <label for="signup-name">Full name</label>
           <input type="text" id="signup-name" name="name" autocomplete="name" placeholder="Your full name" />
@@ -108,12 +108,12 @@
         <p class="form-note">By creating an account, you agree to Nodus's Terms of Service and Privacy Policy.</p>
       </form>
 
-      <p class="auth-switch">Already have an account? <a href="login.html">Sign in</a></p>
+      <p class="auth-switch">Already have an account? <a href="../login/login.php">Sign in</a></p>
     </div>
   </section>
 
 </div>
 
-<script src="js/script.js"></script>
+<script src="../scripts/script.js"></script>
 </body>
 </html>

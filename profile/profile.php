@@ -6,7 +6,7 @@
 <title>Nodus | Profile</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="css/styles.css" />
+<link rel="stylesheet" href="../styles/style.css" />
 </head>
 <body class="profile-page">
 
@@ -219,9 +219,9 @@
 </main>
 
 <footer class="site-footer">
-  Nodus &mdash; a front-end concept. &nbsp;<a href="#" data-sign-out>Sign out</a>
+  Nodus &mdash; a front-end concept. &nbsp;<a href="../login/login.php" data-sign-out>Sign out</a>
 </footer>
 
-<script src="js/script.js"></script>
+<script src="../scripts/script.js"></script>
 </body>
 </html>
