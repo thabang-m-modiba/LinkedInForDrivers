@@ -14,8 +14,9 @@ The idea behind this name is to create a platform where professional drivers can
 
 ## Development Tools - The project is being developed using the following tools:
 * XAMPP
-* Visual Studio Code
+* Visual Studio Code, copilot
 * MySQL Workbench
+* Claude.ai
 
 ## Timeline of Challenges we have came across and how we solved them.
 #### <b>08/10/2026</b>:
