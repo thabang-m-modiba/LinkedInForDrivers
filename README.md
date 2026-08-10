@@ -16,3 +16,8 @@ The idea behind this name is to create a platform where professional drivers can
 * XAMPP
 * Visual Studio Code
 * MySQL Workbench
+
+## Timeline of Challenges we have came across and how we solved them.
+#### <b>08/10/2026</b>:
+- We were struggling to work with the html, css and Javascript generate by claude.ai
+- The problem was solved by writing our own html from scratch
