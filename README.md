@@ -1,2 +1,18 @@
-# LinkedInForDrivers
-LinkedIn Clone
+# LinkedIn For Drivers (Creating a fully functional Web Application similar to LinkedIn)
+
+## Why are we creating this app (The Main Purpose)?
+The primary goal for this project is to build a fully functional professional networking web application inspired by platforms such as LinkedIn. This project is designed not only as a portfolio application, but also as a hands-on learning experience to strengthen our full-stack web development skills. Through this project we aim to achieve the following goals:
+1. Strengthen core web development skills (html, css, JavaScript, PHP and MySQL)
+2. Improve Database and SQL Skills - Develop a strong understanding of how web applications communicate with databases.
+3. Learn Web Application Security - Gain practical, hands-on experience in developing secure web applications and protecting them against common cyber attacks (like SQL Injections).
+4. Learn to build fast and efficient web applications - Develop practical skills for creating web applications that are responsive, efficient, and scalable.
+5. Develop Full-Stack Development experience.
+
+## Why the name LinkedIn For Drivers
+
+The idea behind this name is to create a platform where professional drivers can build an online professional profile, showcase their driving experience, skills, qualifications, and career history, and connect with potential employers and other professionals in their industry. However, this project's main purpose is for us to develop and improve our web development skills.
+
+## Development Tools - The project is being developed using the following tools:
+* XAMPP
+* Visual Studio Code
+* MySQL Workbench
