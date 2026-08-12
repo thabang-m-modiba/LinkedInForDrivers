@@ -9,25 +9,27 @@ if(isset($_POST["submit"])){
 
     $resetObj = new ResetPasswordController($email);
     $code = $resetObj->sendCode();
-    require "../vendor/autoload.php";
+    require_once '../PHPMailer/src/Exception.php';
+    require_once '../PHPMailer/src/PHPMailer.php';
+    require_once '../PHPMailer/src/SMTP.php';
     $mail = new PHPMailer\PHPMailer\PHPMailer(true);
 
     try{
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
         $mail->SMTPAuth = true;
-        $mail->Username = 'your_email@gmail.com';
-        $mail->Password = 'your_email_password';
+        $mail->Username = 'thabangmamoloko8@gmail.com';
+        $mail->Password = '';
         $mail->SMTPSecure = PHPMailer\PHPMailer\PHPMailer::ENCRYPTION_STARTTLS;
         $mail->Port = 587;
-        $mail->setFrom('your_email@gmail.com', 'Your Name');
+        $mail->setFrom('thabangmamoloko8@gmail.com', 'Thabang');
         $mail->addAddress($email);
         $mail->Subject = 'Password Reset Code';
         $mail->Body = 'Your password reset code is: ' . $code." Code expires in 15 minutes.";
         $mail->send();
 
-        header("location: ../verifyCode.php?email=".$email);
+        header("location: ../pwdReset/verifyCode.php?email=" . $email);
     } catch (Exception $e) {    
-        header("location: ../resetPassword.php?error=mailerror");
+        header("location: ../pwdReset/resetPassword.php?error=mailerror");
     }
 }
