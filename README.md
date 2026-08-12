@@ -22,3 +22,8 @@ The idea behind this name is to create a platform where professional drivers can
 #### <b>08/10/2026</b>:
 - We were struggling to work with the html, css and Javascript generate by claude.ai
 - The problem was solved by writing our own html from scratch
+
+#### <b>12/08/2026</b>
+- The forgot password system not functioning correctly.
+- The steps we took to solve this issue:
+  * Identify the errors in the code
