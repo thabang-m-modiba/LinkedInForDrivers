@@ -27,3 +27,4 @@ The idea behind this name is to create a platform where professional drivers can
 - The forgot password system not functioning correctly.
 - The steps we took to solve this issue:
   * Identify the errors in the code
+#### <b>BUG: Avoid the same user logging in more than once</b>
