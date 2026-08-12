@@ -14,7 +14,7 @@
 </section>
 
 <section class="password-reset-link">
-    <p><a href="#">Forgot Password?</a></p>
+    <p><a href="../pwdReset/forgotPassword.php">Forgot Password?</a></p>
 </section>
 
 <section class="register-link">
