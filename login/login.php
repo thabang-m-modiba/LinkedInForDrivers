@@ -1,23 +1,30 @@
 <?php require '../header/header.php'; ?>
 
-<section class="login-form-section">
-    <h2>Login</h2>
-    <form action="../includes/login.inc.php" method="post">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required><br>
+<main>
+    <section class="form-card login-form-section">
+        <h2>Login</h2>
+        <form action="../includes/login.inc.php" method="post">
+            <div class="field">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br>
+            <div class="field">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
 
-        <button type="submit" name="submit">Login</button>
-    </form>
-</section>
+            <button type="submit" name="submit" class="btn btn-primary">Login</button>
+        </form>
 
-<section class="password-reset-link">
-    <p><a href="../pwdReset/forgotPassword.php">Forgot Password?</a></p>
-</section>
+        <p class="form-footnote password-reset-link">
+            <a href="../pwdReset/forgotPassword.php">Forgot password?</a>
+        </p>
 
-<section class="register-link">
-    <p>Don't have an account? <a href="../signup/signup.php">Register here</a></p>
-</section>
+        <p class="form-footnote register-link">
+            Don't have an account? <a href="../signup/signup.php">Register here</a>
+        </p>
+    </section>
+</main>
+
 <?php require '../footer/footer.php'; ?>

@@ -1,35 +1,51 @@
 <?php require '../header/header.php'; ?>
 
-<section class="signup-form-section">
-    <h2>Sign Up</h2>
-    <form action="../includes/signup.inc.php" method="post">
-        <label for="name">Name(s):</label>
-        <input type="text" id="name" name="name" required><br>
+<main>
+    <section class="form-card signup-form-section">
+        <h2>Sign Up</h2>
+        <form action="../includes/signup.inc.php" method="post">
+            <div class="field">
+                <label for="name">Name(s)</label>
+                <input type="text" id="name" name="name" required>
+            </div>
 
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required><br>
+            <div class="field">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
 
-        <label for="phone">Phone Number:</label>
-        <input type="tel" id="phone" name="phone" required><br>
+            <div class="field">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
 
-        <label for="dob">Date of Birth:</label>
-        <input type="date" id="dob" name="dob" required><br>
+            <div class="field">
+                <label for="dob">Date of Birth</label>
+                <input type="date" id="dob" name="dob" required>
+            </div>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br>
+            <div class="field">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br>
+            <div class="field">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
 
-        <label for="passwordRepeat">Repeat Password:</label>
-        <input type="password" id="passwordRepeat" name="passwordRepeat" required><br>
+            <div class="field">
+                <label for="passwordRepeat">Repeat Password</label>
+                <input type="password" id="passwordRepeat" name="passwordRepeat" required>
+            </div>
 
-        <button type="submit" name="submit">Sign Up</button>
-    </form>
-</section>
+            <button type="submit" name="submit" class="btn btn-primary">Sign Up</button>
+        </form>
 
-<section class="login-link-section">
-    <p>Already have an account? <a href="../login/login.php">Login here</a></p>
-</section>
+        <p class="form-footnote login-link-section">
+            Already have an account? <a href="../login/login.php">Login here</a>
+        </p>
+    </section>
+</main>
 
 <?php require '../footer/footer.php'; ?>
