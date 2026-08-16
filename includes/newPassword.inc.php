@@ -16,5 +16,5 @@ $stmt = $db->connect()->prepare("UPDATE users SET user_password = ?, reset_code 
 $stmt->execute(array($hashedPassword, $email));
 
 unset($_SESSION["email"]);
-header("location: ../login.php?success=passwordreset");
+header("location: ../login/login.php?success=passwordreset");
 exit();
