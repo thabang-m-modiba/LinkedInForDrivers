@@ -1,115 +1,136 @@
-<?php
-require '../header/header.php';
-
-if (!isset($_SESSION['username'])) {
-    header('Location: ../login/login.php');
-    exit();
-}
-
-require '../includes/dbh.inc.php';
-
-$userId = $_SESSION['user_id'];
-
-$userStmt = $pdo->prepare('SELECT name, username, email, phone, dob, bio FROM users WHERE id = :id');
-$userStmt->execute([':id' => $userId]);
-$user = $userStmt->fetch(PDO::FETCH_ASSOC);
-
-$postsStmt = $pdo->prepare(
-    'SELECT id, content, created_at FROM posts WHERE user_id = :id ORDER BY created_at DESC'
-);
-$postsStmt->execute([':id' => $userId]);
-$myPosts = $postsStmt->fetchAll(PDO::FETCH_ASSOC);
+<?php 
+require_once '../header/header.php';
+include '../classes/dbh.classes.php';
 ?>
 
 <main>
 
-    <?php if (isset($_GET['success']) && $_GET['success'] === 'updated'): ?>
-        <div class="alert alert-success">Profile updated.</div>
-    <?php elseif (isset($_GET['error']) && $_GET['error'] === 'required'): ?>
-        <div class="alert alert-error">Name and email are required.</div>
-    <?php elseif (isset($_GET['error']) && $_GET['error'] === 'email'): ?>
-        <div class="alert alert-error">Enter a valid email address.</div>
-    <?php endif; ?>
+    <div class="alert alert-success">Profile updated.</div>
 
     <div class="profile-header">
-        <div class="avatar avatar-lg"><?php echo strtoupper(substr($user['name'] ?: $user['username'], 0, 1)); ?></div>
+        <div class="avatar avatar-lg">T</div>
         <div>
-            <h2><?php echo htmlspecialchars($user['name'] ?: $user['username']); ?></h2>
-            <p class="post-time">@<?php echo htmlspecialchars($user['username']); ?></p>
-            <?php if (!empty($user['bio'])): ?>
-                <p><?php echo htmlspecialchars($user['bio']); ?></p>
-            <?php endif; ?>
+            <h2>Thabang Mamoloko</h2>
+            <p class="post-time">@thabang</p>
+            <p>Computer science student. Building things for people who need them.</p>
         </div>
     </div>
 
     <div class="profile-tabs">
         <button type="button" class="active" data-tab="tab-info">Info</button>
-        <button type="button" data-tab="tab-posts">Posts (<?php echo count($myPosts); ?>)</button>
+        <button type="button" data-tab="tab-posts">Posts (0)</button>
         <button type="button" data-tab="tab-edit">Edit Profile</button>
     </div>
 
     <!-- Basic info -->
     <div id="tab-info" class="profile-panel active">
-        <div class="field"><label>Name</label><p><?php echo htmlspecialchars($user['name']); ?></p></div>
-        <div class="field"><label>Username</label><p><?php echo htmlspecialchars($user['username']); ?></p></div>
-        <div class="field"><label>Email</label><p><?php echo htmlspecialchars($user['email']); ?></p></div>
-        <div class="field"><label>Phone</label><p><?php echo htmlspecialchars($user['phone']); ?></p></div>
-        <div class="field"><label>Date of Birth</label><p><?php echo htmlspecialchars($user['dob']); ?></p></div>
+        <div class="field"><label>Name</label><p><?php 
+            $dbh = new Dbh();
+            $stmt = $dbh->connect()->prepare("SELECT user_name FROM users WHERE username = ?;");
+            $stmt->execute(array($_SESSION['username']));
+            echo $stmt->fetch(PDO::FETCH_ASSOC)['user_name'];
+         ?></p></div>
+        <div class="field"><label>Username</label><p>
+            <?php
+                $dbh = new Dbh();
+                $stmt = $dbh->connect()->prepare("SELECT username FROM users WHERE username = ?;");
+                $stmt->execute(array($_SESSION['username']));
+                echo $stmt->fetch(PDO::FETCH_ASSOC)['username'];
+            ?>
+        </p></div>
+        <div class="field"><label>Email</label><p>
+            <?php
+                $dbh = new Dbh();
+                $stmt = $dbh->connect()->prepare("SELECT user_email FROM users WHERE username = ?;");
+                $stmt->execute(array($_SESSION['username']));
+                echo $stmt->fetch(PDO::FETCH_ASSOC)['user_email']; 
+            ?>
+        </p></div>
+        <div class="field"><label>Phone</label><p>
+            <?php 
+                $dbh = new Dbh();
+                $stmt = $dbh->connect()->prepare("SELECT phone FROM users WHERE username = ?;");
+                $stmt->execute(array($_SESSION['username']));
+                echo $stmt->fetch(PDO::FETCH_ASSOC)['phone'];
+            ?>
+        </p></div>
+        <div class="field"><label>Date of Birth</label><p>
+            <?php
+                $dbh = new Dbh();
+                $stmt = $dbh->connect()->prepare("SELECT dop FROM users WHERE username = ?;");
+                $stmt->execute(array($_SESSION['username']));
+                echo $stmt->fetch(PDO::FETCH_ASSOC)['dop'];
+            ?>
+        </p></div>
     </div>
 
     <!-- User's posts -->
     <div id="tab-posts" class="profile-panel">
-        <?php if (empty($myPosts)): ?>
-            <div class="empty-state">
-                <span class="material-symbols-outlined">forum</span>
-                <p>You haven't posted anything yet.</p>
-            </div>
-        <?php else: ?>
-            <div class="feed">
-                <?php foreach ($myPosts as $post): ?>
-                    <article class="post-card">
-                        <div class="post-head">
-                            <div class="avatar"><?php echo strtoupper(substr($user['name'] ?: $user['username'], 0, 1)); ?></div>
-                            <div class="post-meta">
-                                <div class="post-author"><?php echo htmlspecialchars($user['name'] ?: $user['username']); ?></div>
-                                <div class="post-time"><?php echo date('M j, Y \a\t g:i A', strtotime($post['created_at'])); ?></div>
-                            </div>
-                            <form class="post-delete-form" action="includes/posts.inc.php" method="post">
-                                <input type="hidden" name="post_id" value="<?php echo (int) $post['id']; ?>">
-                                <button type="submit" name="delete_post" class="post-delete" aria-label="Delete post">
-                                    <span class="material-symbols-outlined">delete</span>
-                                </button>
-                            </form>
-                        </div>
-                        <p class="post-body"><?php echo nl2br(htmlspecialchars($post['content'])); ?></p>
-                    </article>
-                <?php endforeach; ?>
-            </div>
-        <?php endif; ?>
+        <div class="feed">
+            <article class="post-card">
+                <div class="post-head">
+                    <div class="avatar">T</div>
+                    <div class="post-meta">
+                        <div class="post-author">Thabang Mamoloko</div>
+                        <div class="post-time">Aug 18, 2026 at 3:42 PM</div>
+                    </div>
+                    <form class="post-delete-form">
+                        <button type="submit" class="post-delete" aria-label="Delete post">
+                            <span class="material-symbols-outlined">delete</span>
+                        </button>
+                    </form>
+                </div>
+                <p class="post-body">Just shipped a new feature on the site. Excited to keep building this out.</p>
+            </article>
+
+            <article class="post-card">
+                <div class="post-head">
+                    <div class="avatar">T</div>
+                    <div class="post-meta">
+                        <div class="post-author">Thabang Mamoloko</div>
+                        <div class="post-time">Aug 12, 2026 at 9:10 AM</div>
+                    </div>
+                    <form class="post-delete-form">
+                        <button type="submit" class="post-delete" aria-label="Delete post">
+                            <span class="material-symbols-outlined">delete</span>
+                        </button>
+                    </form>
+                </div>
+                <p class="post-body">Working through some assembly assignments this week. Stack frames are finally clicking.</p>
+            </article>
+        </div>
+
+        <!-- Empty state, shown instead of the feed above when there are no posts -->
+        <!--
+        <div class="empty-state">
+            <span class="material-symbols-outlined">forum</span>
+            <p>You haven't posted anything yet.</p>
+        </div>
+        -->
     </div>
 
     <!-- Edit profile form -->
     <div id="tab-edit" class="profile-panel">
         <section class="form-card" style="margin: 0;">
-            <form action="includes/updateProfile.inc.php" method="post">
+            <form>
                 <div class="field">
                     <label for="name">Name(s)</label>
-                    <input type="text" id="name" name="name" value="<?php echo htmlspecialchars($user['name']); ?>" required>
+                    <input type="text" id="name" name="name" value="Thabang Mamoloko" required>
                 </div>
 
                 <div class="field">
                     <label for="email">Email</label>
-                    <input type="email" id="email" name="email" value="<?php echo htmlspecialchars($user['email']); ?>" required>
+                    <input type="email" id="email" name="email" value="thabang@example.com" required>
                 </div>
 
                 <div class="field">
                     <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" value="<?php echo htmlspecialchars($user['phone']); ?>">
+                    <input type="tel" id="phone" name="phone" value="+27 71 234 5678">
                 </div>
 
                 <div class="field">
                     <label for="bio">Bio</label>
-                    <input type="text" id="bio" name="bio" maxlength="255" value="<?php echo htmlspecialchars($user['bio'] ?? ''); ?>">
+                    <input type="text" id="bio" name="bio" maxlength="255" value="Computer science student. Building things for people who need them.">
                 </div>
 
                 <button type="submit" class="btn btn-primary">Save changes</button>
@@ -119,4 +140,4 @@ $myPosts = $postsStmt->fetchAll(PDO::FETCH_ASSOC);
 
 </main>
 
-<?php require '../footer/footer.php'; ?>
+<?php require_once '../footer/footer.php'; ?>

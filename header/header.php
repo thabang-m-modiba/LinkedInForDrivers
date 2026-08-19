@@ -25,23 +25,23 @@
         </button>
 
         <ul class="nav-menus" id="navMenus">
-            <li><a href="index.php">
+            <li><a <?php if(isset($_SESSION['username'])) { echo "href='../index.php'"; }else { echo "href='index.php'"; } ?>>
                 <span class="material-symbols-outlined">home</span>
                 <span>Home</span>
             </a></li>
-            <li><a href="/networks">
+            <li><a href="#">
                 <span class="material-symbols-outlined">groups</span>
                 <span>Networks</span>
             </a></li>
-            <li><a href="/jobs">
+            <li><a href="#">
                 <span class="material-symbols-outlined">work</span>
                 <span>Jobs</span>
             </a></li>
-            <li><a href="/messages">
+            <li><a href="#">
                 <span class="material-symbols-outlined">chat</span>
                 <span>Messages</span>
             </a></li>
-            <li><a href="/notifications">
+            <li><a href="#">
                 <span class="material-symbols-outlined">notifications</span>
                 <span>Notifications</span>
             </a></li>
