@@ -15,6 +15,9 @@ if(isset($_POST['submit'])){
 
     $post->createPostUser();
 
-    header("location: ..index.php?success=created");
+    header("location: ../index.php?success=created");
+    exit();
+}else{
+    header("location: ../index.php?error=connectionFailed");
     exit();
 }

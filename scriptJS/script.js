@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     /* ---- Post composer character counter ---- */
+    var postTitle = document.getElementById('postTitle');
     var postInput = document.getElementById('postContent');
     var charCount = document.getElementById('charCount');
     var postSubmit = document.getElementById('postSubmit');
@@ -12,10 +13,12 @@ document.addEventListener('DOMContentLoaded', function () {
             charCount.textContent = remaining;
             charCount.classList.toggle('limit-near', remaining <= 20);
             if (postSubmit) {
-                postSubmit.disabled = postInput.value.trim().length === 0 || remaining < 0;
+                var titleFilled = !postTitle || postTitle.value.trim().length > 0;
+                postSubmit.disabled = postInput.value.trim().length === 0 || !titleFilled || remaining < 0;
             }
         };
         postInput.addEventListener('input', updateCount);
+        if (postTitle) postTitle.addEventListener('input', updateCount);
         updateCount();
     }
 

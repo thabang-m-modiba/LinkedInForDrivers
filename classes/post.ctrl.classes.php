@@ -15,7 +15,7 @@ class PostCtrl extends Post{
 
     public function createPostUser(){
         if($this->emptInput() == false) {
-            header("location: ../index.php?error=emptyInput")
+            header("location: ../index.php?error=emptyInput");
             exit();
         }
 
@@ -31,7 +31,7 @@ class PostCtrl extends Post{
 
         $post = $this->getPost($this->id);
         if(!$post){
-            header("location: ../index.php>error=postNotFound");
+            header("location: ../index.php?error=postNotFound");
             exit();
         }
 
@@ -47,7 +47,7 @@ class PostCtrl extends Post{
     public function deletePostUser(){
         $post = $this->getPost($this->id);
         if(!$post){
-            header("location: ..index.php?error=postNotFound");
+            header("location: ../index.php?error=postNotFound");
             exit();
         }
 

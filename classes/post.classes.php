@@ -21,40 +21,40 @@ class Post extends Dbh{
             exit();
         }
         return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 
         // Get single Post
-        protected function getPost($id){
-            $stmt = $this->connect()->prepare("SELECT * FROM posts WHERE id = ?");
-            if(!$stmt->execute($id)){
-                $stmt = null;
-                header("location: ../index.php?error=stmtFailed");
-                exit();
-            }
-
-            return $stmt->fetch(PDO::FETCH_ASSOC);
-        }
-
-        //Update Post
-        protected function updatePost($title, $content, $id){
-            $stmt = $this->connect()->prepare("UPDATE posts SET title = ?, content = ?, WHERE id = ?;");
-            if(!$stmt->execute(array($title, $content, $id))){
-                $stmt = null;
-                header("location: ../index.php?error=stmtFailed");
-                exit();
-            }
+    protected function getPost($id){
+        $stmt = $this->connect()->prepare("SELECT * FROM posts WHERE id = ?");
+        if(!$stmt->execute($id)){
             $stmt = null;
+            header("location: ../index.php?error=stmtFailed");
+            exit();
         }
 
-        // Delete post
-        protected function deletePost($id, $username){
-            $stmt = $this->connect()->prepare("DELETE FROM posts WHERE id = ? AND username = ?;");
-            if(!$stmt->execute(array($id, $username))){
-                $stmt = null;
-                header("location: ../index.php?error=stmtFailed")
-                exit();
-            }
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 
+    //Update Post
+    protected function updatePost($title, $content, $id){
+        $stmt = $this->connect()->prepare("UPDATE posts SET title = ?, content = ?, WHERE id = ?;");
+        if(!$stmt->execute(array($title, $content, $id))){
             $stmt = null;
+            header("location: ../index.php?error=stmtFailed");
+            exit();
         }
+        $stmt = null;
+    }
+
+    // Delete post
+    protected function deletePost($id, $username){
+        $stmt = $this->connect()->prepare("DELETE FROM posts WHERE id = ? AND username = ?;");
+        if(!$stmt->execute(array($id, $username))){
+            $stmt = null;
+            header("location: ../index.php?error=stmtFailed");
+            exit();
+        }
+
+        $stmt = null;
     }
 }
