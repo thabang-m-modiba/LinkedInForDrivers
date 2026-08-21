@@ -38,8 +38,8 @@ The idea behind this name is to create a platform where professional drivers can
 - <b>STATUS</b>: solved
 
 #### <b>13/08/2026</b>
-- BUG: Avoid the same user logging in more than once
-- <b>STATUS</b>: Not solved yet
+- BUG: Avoid the same user signing up more than once
+- <b>STATUS</b>: Solved
 
 #### <b>16/08/2026</b>
 - The AI generated code (style.css) has caused few bugs
