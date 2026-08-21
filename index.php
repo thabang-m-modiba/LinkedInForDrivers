@@ -1,5 +1,6 @@
 <?php
 require 'header/header.php';
+include 'classes/dbh.classes.php';
 
 $isLoggedIn = isset($_SESSION['username']);
 ?>
@@ -23,6 +24,48 @@ $isLoggedIn = isset($_SESSION['username']);
             <input type="text" maxlength="500" name="content" placeholder="Enter text" class="post-form-content" required>
             <button type="submit" class="btn btn-primary" name="submit">Post</button>
         </form>
+
+        <div class="feed">
+
+            <?php 
+            $dbh = new Dbh();
+
+            $stmt = $dbh->connect()->query("SELECT * FROM posts;");
+            $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            if(count($posts) > 0){
+                //$results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                $postNum = count($posts);
+                for($i = $postNum-1; $i >= 0; $i--){
+                    $name = $posts[$i]["username"];
+                    $title = $posts[$i]["title"];
+                    $content = $posts[$i]["content"];
+                    $date = $posts[$i]["created_num"];
+                    //print_r($posts);
+                    echo '
+                    <article class="post-card">
+                        <div class="post-head">
+                            <div class="avatar">'.strtoupper(substr($name, 0, 1)).'</div>
+                            <div class="post-meta">
+                                <div class="post-author">'.$name.'</div>
+                                <div class="post-time">'.$date.'</div>
+                            </div>
+                            <!--
+                            <form class="post-delete-form">
+                                <button type="submit" class="post-delete" aria-label="Delete post">
+                                    <span class="material-symbols-outlined">delete</span>
+                                </button>
+                            </form>-->
+                        </div>
+                        <p class="post-body">'.$content.'</p>
+                    </article>
+                ';
+                }
+            }else{
+                echo "No Posts";
+            }
+
+            ?>
+        </div>
 
     <?php else: ?>
 

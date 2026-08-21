@@ -17,6 +17,7 @@ if(isset($_POST["submit"])) {
 
     // Call the signupUser method to handle the signup process
     $signupCtrl = new SignupCtrl($name, $username, $phone, $dob, $email, $password, $passwordRepeat);
+    
     $signupCtrl->signupUser();
 
     // Redirect to a success page or display a success message

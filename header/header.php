@@ -17,7 +17,7 @@
 <header>
     <nav>
         <div class="logo">
-            LOGO
+            LinkedInForDrivers
         </div>
 
         <button type="button" id="navToggle" class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navMenus">
