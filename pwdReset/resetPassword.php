@@ -3,6 +3,19 @@
 <main>
     <section class="form-card">
         <h2>Reset Password</h2>
+        <div class="error-msg-wrapper">
+            <p class="error-msg" style="color: red;">
+                <?php
+                if(isset($_GET['error'])){
+                    $message = $_GET['error'];
+
+                    if($message === "nouser"){
+                        echo "(User Does Not Exist!)";
+                    }
+                }
+                ?>
+            </p>
+        </div>
         <form action="../includes/newPassword.inc.php?email=<?php echo urlencode($_GET['email'] ?? ''); ?>" method="post">
             <div class="field">
                 <label for="new_password">New Password</label>

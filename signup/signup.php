@@ -3,6 +3,47 @@
 <main>
     <section class="form-card signup-form-section">
         <h2>Sign Up</h2>
+        <div class="error-msg-wrapper">
+            <p class="error-msg" style="color: red;">
+                <?php
+                if(isset($_GET['error'])){
+                    $message = $_GET['error'];
+
+                    if($message === "emptyinput"){
+                        echo "(Enter All Fields!)";
+                    }
+
+                    if($message === "invalidName"){
+                        echo "(Invalid Name!)";
+                    }
+
+                    if($message === "invalidusername"){
+                        echo "(Invalid User Name)";
+                    }
+
+                    if($message === "invalidphone"){
+                        echo "(Invalid Phone Number!)";
+                    }
+
+                    if($message === "invaliddob"){
+                        echo "(Invalid Date Of Birth!)";
+                    }
+
+                    if($message === "invalidemail"){
+                        echo "(Invalid email!)";
+                    }
+
+                    if($message === "passwordsdontmatch"){
+                        echo "(Passwords Do Not Match!)";
+                    }
+
+                    if($message === "useroremailtaken"){
+                        echo "(Username or Email already exits)";
+                    }
+                }
+                ?>
+            </p>
+        </div>
         <form action="../includes/signup.inc.php" method="post">
             <div class="field">
                 <label for="name">Name(s)</label>

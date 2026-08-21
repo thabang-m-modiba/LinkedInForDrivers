@@ -18,7 +18,31 @@ $isLoggedIn = isset($_SESSION['username']);
                 </form>
             </div>
         </div>
+        <div class="error-msg-wrapper">
+            <p class="error-msg" style="color: red;">
+                <?php
+                if(isset($_GET['error'])){
+                    $message = $_GET['error'];
 
+                    if($message === "emptyInput"){
+                        echo "(Empty Inputs!)";
+                    }
+
+                    if($message === "postNotFound"){
+                        echo "(Post Do Not Exist!)";
+                    }
+
+                    if($message === "unauthorized"){
+                        echo "(Illegal Access!)";
+                    }
+
+                    if($message === "loggedout"){
+                        //echo "Logged Out";
+                    }
+                }
+                ?>
+            </p>
+        </div>
         <form class="post-form" action="includes/post.inc.php" method="post">
             <input type="text" name="title" placeholder="Title" class="post-form-title" required>
             <input type="text" maxlength="500" name="content" placeholder="Enter text" class="post-form-content" required>
